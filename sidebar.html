@@ -12,6 +12,7 @@
     padding: 20px;
     display: flex;
     align-items: center;
+    position: relative;
   }
 
   .sidebar .header img {
@@ -19,6 +20,22 @@
     height: 40px;
     border-radius: 50%;
     margin-right: 10px;
+  }
+
+  .sidebar #toggle {
+    position: absolute;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    z-index: 100;
+    opacity: 0;
+  }
+
+  .sidebar svg {
+    position: absolute;
+    right: 10px;
+    width: 40px;
+    height: 40px;
   }
 
   .sidebar .header h2 {
@@ -95,7 +112,7 @@
   }
 
   .sidebar {
-    background-color: red;
+    background-color: rgb(207, 215, 216);
     transition: width 0.5s;
     overflow: hidden;
     display: flex;
@@ -112,17 +129,35 @@
     width: 50px;
   }
 
+  .sidebar:has(input#toggle:checked) .logo-container,
+  .sidebar:has(input#toggle:checked) .menu,
+  .sidebar:has(input#toggle:checked) .footer {
+    display: none;
+  }
+
   .sidebar .item {
     transition: background-color 0.5s;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
   }
 </style>
 
 <div class="sidebar">
   <div>
     <div class="header">
-      <img src="https://via.placeholder.com/40" alt="Avatar" />
-      <h2>widelab</h2>
+      <div class="logo-container">
+        <img src="./image/icon.png" alt="Avatar" />
+        <h2>widelab</h2>
+      </div>
       <input type="checkbox" id="toggle" />
+      <svg xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+        <path
+          d="M16 132h416c8.8 0 16-7.2 16-16V76c0-8.8-7.2-16-16-16H16C7.2 60 0 67.2 0 76v40c0 8.8 7.2 16 16 16zm0 160h416c8.8 0 16-7.2 16-16v-40c0-8.8-7.2-16-16-16H16c-8.8 0-16 7.2-16 16v40c0 8.8 7.2 16 16 16zm0 160h416c8.8 0 16-7.2 16-16v-40c0-8.8-7.2-16-16-16H16c-8.8 0-16 7.2-16 16v40c0 8.8 7.2 16 16 16z" />
+      </svg>
     </div>
     <div class="menu">
       <div class="item">
