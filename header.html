@@ -1,0 +1,28 @@
+<style>
+  .header {
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .scroll-text {
+    transform: translateX(100%);
+    animation: scrollText 20s linear infinite;
+  }
+
+  .scroll-text-item {
+    display: inline;
+    padding: 0 30px;
+  }
+
+  @keyframes scrollText {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+</style>
+<div class="header">
+  <div id="scrollText" class="scroll-text"></div>
+</div>
