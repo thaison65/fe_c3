@@ -12,6 +12,7 @@
     padding: 20px;
     display: flex;
     align-items: center;
+    position: relative;
   }
 
   .sidebar .header img {
@@ -19,6 +20,23 @@
     height: 40px;
     border-radius: 50%;
     margin-right: 10px;
+  }
+
+  .sidebar #toggle {
+    position: absolute;
+    right: 10px;
+    width: 25px;
+    height: 25px;
+    z-index: 100;
+    opacity: 0;
+  }
+
+  .sidebar .toggle-icon {
+    background-image: url("./icon/toggle.svg");
+    position: absolute;
+    right: 10px;
+    width: 25px;
+    height: 25px;
   }
 
   .sidebar .header h2 {
@@ -31,10 +49,11 @@
   }
 
   .sidebar .menu .item {
+    margin-bottom: 10px;
     padding: 10px 0;
     display: flex;
     align-items: center;
-    color: #333;
+    color: #47de14;
     cursor: pointer;
   }
 
@@ -49,9 +68,106 @@
   .sidebar .footer {
     padding: 20px;
     display: flex;
+    justify-content: center;
     align-items: center;
+    gap: 5px;
     border-top: 1px solid #ddd;
   }
+
+  /* Code actions button */
+  .sidebar .footer .actions {
+    /* position: relative; */
+    display: flex;
+    width: 50px;
+    height: 50px;
+  }
+
+  input#popUp {
+    display: none;
+  }
+
+  input#popUp:checked~.actions-pop {
+    /* display: none; */
+    opacity: inherit;
+    visibility: visible;
+  }
+
+
+  .sidebar .footer .actions .actions-button {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar .footer .actions .actions-button:hover {
+    transform: scale(1.1);
+  }
+
+  .sidebar .footer .actions .actions-button:after {
+    content: '\2807';
+    font-size: 50px;
+    background-color: transparent;
+    color: white;
+    transition: color 0.3s ease;
+  }
+
+  .sidebar .actions-pop {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    bottom: 20px;
+    left: 240px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    gap: 20px;
+    border-radius: 10px;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+  }
+
+  .sidebar .actions-pop::before {
+    content: "";
+    position: absolute;
+    bottom: 30px;
+    left: -20px;
+    width: 0;
+    height: 0;
+    border-radius: 20px;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-right: 15px solid rgba(255, 255, 255, 0.9);
+  }
+
+
+  .sidebar .actions-pop .actions-popUp {
+    cursor: pointer;
+    background-color: rgba(218, 218, 218, 0.9);
+    border: none;
+    padding: 20px 35px 20px;
+    display: flex;
+    gap: 10px;
+    border-radius: 7px;
+  }
+
+  .sidebar .actions-pop .actions-popUp:hover {
+    background-color: rgba(218, 218, 218, 0.9);
+    border: none;
+    padding: 20px 35px 20px;
+    display: flex;
+    gap: 10px;
+    border-radius: 10px;
+    transform: scale(1.1);
+  }
+
+  .sidebar .actions-pop .actions-popUp:nth-child(1) {}
+
+  .sidebar .actions-pop .actions-popUp:nth-child(2) {}
+
+  .sidebar .actions-pop .actions-popUp:nth-child(3) {}
+
+  .sidebar .actions-pop .actions-popUp:nth-child(4) {}
 
   .sidebar .footer img {
     width: 40px;
@@ -60,8 +176,19 @@
     margin-right: 10px;
   }
 
+  .avt-info img:empty {
+    background-color: aqua;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid black;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    margin: unset;
+  }
   .sidebar .footer .info {
-    flex-grow: 1;
+    display: flex;
   }
 
   .sidebar .footer .info .name {
@@ -80,7 +207,7 @@
     align-items: flex-end;
   }
 
-  .sidebar .footer .actions button {
+  /* .sidebar .footer .actions button {
     margin: 5px 0;
     padding: 5px 10px;
     font-size: 12px;
@@ -92,10 +219,10 @@
 
   .sidebar .footer .actions button:hover {
     background-color: #f0f0f0;
-  }
+  } */
 
   .sidebar {
-    background-color: red;
+    background-color: rgb(207, 215, 216);
     transition: width 0.5s;
     overflow: hidden;
     display: flex;
@@ -112,40 +239,148 @@
     width: 50px;
   }
 
+  .sidebar:has(input#toggle:checked) :is(.logo-container, .menu, .footer) {
+    display: none;
+  }
+
   .sidebar .item {
     transition: background-color 0.5s;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  span {
+    padding-left: 1vh;
+  }
+
+  .item {
+    border-radius: 10px;
+    z-index: 1;
+    font-size: inherit;
+    font-family: inherit;
+    color: white;
+    padding: 0.5em 1em;
+    outline: none;
+    border: none;
+    background-color: hsl(17, 30%, 9%);
+  }
+
+  .item:hover {
+    cursor: pointer;
+    animation: jelly 0.5s;
+  }
+
+  @keyframes jelly {
+
+    0%,
+    100% {
+      transform: scale(1, 1);
+    }
+
+    25% {
+      transform: scale(0.9, 1.1);
+    }
+
+    50% {
+      transform: scale(1.1, 0.9);
+    }
+
+    75% {
+      transform: scale(0.95, 1.05);
+    }
+  }
+
+  .inbox {
+    margin-left: 5px;
+
+    background-image: url("./icon/inbox.svg");
+    width: 1em;
+    height: 1em;
+    background-color: #47de14;
+  }
+
+  img[alt="activity"] {
+    margin-left: 5px;
+    width: 1em;
+    height: 1em;
+    background-color: #47de14;
+  }
+
+  img[alt="schedule"] {
+    margin-left: 5px;
+    width: 1em;
+    height: 1em;
+    background-color: #47de14;
+  }
+
+  img[alt="document"] {
+    margin-left: 5px;
+    width: 1em;
+    height: 1em;
+    background-color: #47de14;
+  }
+
+  img[alt="setting"] {
+    margin-left: 5px;
+    width: 1em;
+    height: 1em;
+    background-color: #47de14;
+  }
+
+  img[alt="logout"] {
+    margin-left: 5px;
+    width: 1em;
+    height: 1em;
+    background-color: #47de14;
   }
 </style>
 
 <div class="sidebar">
+
   <div>
     <div class="header">
-      <img src="https://via.placeholder.com/40" alt="Avatar" />
-      <h2>widelab</h2>
+      <div class="logo-container">
+        <img src="./image/icon.png" alt="Avatar" />
+        <h2>widelab</h2>
+      </div>
       <input type="checkbox" id="toggle" />
+      <div class="toggle-icon"></div>
     </div>
     <div class="menu">
       <div class="item">
-        <i class="fas fa-inbox"></i>
+        <!-- <i class="fas fa-inbox"></i> -->
+        <div class="inbox"></div>
         <span>Inbox</span>
       </div>
       <div class="item">
-        <i class="fas fa-bell"></i>
+        <!-- <i class="fas fa-bell"></i> -->
+        <img src="./icon/activity.svg" alt="activity">
         <span>Activity</span>
       </div>
       <div class="item">
-        <i class="fas fa-calendar-alt"></i>
+        <!-- <i class="fas fa-calendar-alt"></i> -->
+        <img src="./icon/schedule.svg" alt="schedule">
         <span>Schedule</span>
       </div>
       <div class="item">
-        <i class="fas fa-folder"></i>
+        <!-- <i class="fas fa-folder"></i> -->
+        <img src="./icon/documents.svg" alt="document">
         <span>Documents</span>
       </div>
       <div class="item">
-        <i class="fas fa-cog"></i>
+        <!-- <i class="fas fa-cog"></i> -->
+        <img src="./icon/settings.svg" alt="setting">
         <span>Settings</span>
       </div>
       <div class="item">
+        <!-- <i class="fas fa-sign-out-alt"></i> -->
+        <img src="./icon/logout.svg" alt="logout">
+        <span>Logout</span>
+      </div>
+      <!-- <div class="item">
         <i class="fas fa-sign-out-alt"></i>
         <span>Logout</span>
       </div>
@@ -156,25 +391,31 @@
       <div class="item">
         <i class="fas fa-sign-out-alt"></i>
         <span>Logout</span>
-      </div>
-      <div class="item">
-        <i class="fas fa-sign-out-alt"></i>
-        <span>Logout</span>
-      </div>
+      </div> -->
     </div>
   </div>
-
   <div class="footer">
     <div class="info">
-      <img src="https://via.placeholder.com/40" alt="Sandra Marx" />
+      <div class="avt-info">
+      <img src="https://picsum.photos/200/300" alt="" />
+      </div>
       <div>
         <p class="name">Hien Phan</p>
         <p class="email">hienphan3107@gmail.com</p>
       </div>
     </div>
     <div class="actions">
-      <button>Update App</button>
-      <button>Logout</button>
+      <input type="checkbox" id="popUp" />
+      <label for="popUp">
+        <div class="actions-button">
+        </div>
+      </label>
+      <div class="actions-pop">
+        <button class="actions-popUp"><i class="fa-regular fa-user"></i>User Settings</button>
+        <button class="actions-popUp"><i class="fa-solid fa-pen"></i>Update App</button>
+        <button class="actions-popUp"><i class="fa-solid fa-gear"></i>Settings</button>
+        <button class="actions-popUp"><i class="fa-solid fa-right-from-bracket"></i>Logout</button>
+      </div>
     </div>
   </div>
 </div>
