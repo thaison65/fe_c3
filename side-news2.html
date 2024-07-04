@@ -17,8 +17,66 @@
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   }
-  div.item-container-sidenews2 p {
+
+  .slogan {
     font-size: 16px;
+  }
+
+  .detail {
+    display: none;
+  }
+
+  .span.stop {
+    display: inline;
+  }
+
+  .btn-more {
+    position: relative;
+    width: fit-content;
+    display: inline;
+  }
+
+  .btn-more input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .view-more {
+    color: rgb(27, 89, 223);
+  }
+
+  .slogan:has(input:checked) .detail {
+    display: inline;
+  }
+
+  .slogan:has(input:checked) span.stop {
+    display: none;
+  }
+
+  .slogan span[data-checkbox-label="true"] {
+    display: none;
+  }
+
+  .slogan:has(input:checked) span[data-checkbox-label="true"] {
+    display: inline;
+  }
+
+  .slogan:has(input:checked) span[data-checkbox-label="false"] {
+    display: none;
+  }
+
+  .slogan:has(input:checked) span[data-checkbox-label="false"] {
+    display: none;
+  }
+
+  div.item-container-sidenews2 h4 {
+    margin: 0;
+    margin-bottom: 10px;
   }
 </style>
 <div class="item-container-sidenews2">
@@ -26,9 +84,17 @@
 
   <div class="item-content">
     <h4>Hình Ảnh bất kì</h4>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor, urna a egestas pellentesque, ipsum justo faucibus neque, vel sagittis neque
-      ipsum id ex. Donec ullamcorper,
-    </p>
+    <div class="slogan">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati nulla eius labore voluptatem, reprehenderit dignissimos nemo eligendi, rerum
+      <span class="detail">enim quasi dolorem? Tempora possimus temporibus quis, eveniet itaque cum! Dolores, ullam!</span>
+      <span class="stop">...</span>
+      <div class="btn-more">
+        <input type="checkbox" />
+        <span class="view-more">
+          <span data-checkbox-label="false">more</span>
+          <span data-checkbox-label="true">hide</span>
+        </span>
+      </div>
+    </div>
   </div>
 </div>
