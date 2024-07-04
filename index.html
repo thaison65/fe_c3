@@ -90,9 +90,7 @@
         <header id="header">Header</header>
         <section id="hotnews">Hot News</section>
         <section id="img">Image</section>
-        <section id="sidenews" style="background-color: #9b59b6">
-          Side News 1
-        </section>
+        <section id="sidenews" style="background-color: #9b59b6">Side News 1</section>
         <section id="sidenews2">Side News 2</section>
         <section id="other">Other</section>
         <script src="lib.js"></script>
@@ -115,6 +113,13 @@
             .then((response) => response.text())
             .then((data) => {
               document.querySelector(".sidebar").innerHTML = data;
+              loadItemToSidebar();
+            });
+
+          fetch("side-news2.html")
+            .then((response) => response.text())
+            .then((data) => {
+              document.querySelector("#sidenews2").innerHTML = data;
               loadItemToSidebar();
             });
         </script>
