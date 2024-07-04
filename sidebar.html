@@ -49,7 +49,9 @@
   .sidebar .footer {
     padding: 20px;
     display: flex;
+    justify-content: center;
     align-items: center;
+    gap: 5px;
     border-top: 1px solid #ddd;
   }
 
@@ -60,8 +62,19 @@
     margin-right: 10px;
   }
 
+  .avt-info img:empty {
+    background-color: aqua;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid black;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    margin: unset;
+  }
   .sidebar .footer .info {
-    flex-grow: 1;
+    display: flex;
   }
 
   .sidebar .footer .info .name {
@@ -166,7 +179,9 @@
 
   <div class="footer">
     <div class="info">
-      <img src="https://via.placeholder.com/40" alt="Sandra Marx" />
+      <div class="avt-info">
+      <img src="https://picsum.photos/200/300" alt="" />
+      </div>
       <div>
         <p class="name">Hien Phan</p>
         <p class="email">hienphan3107@gmail.com</p>
