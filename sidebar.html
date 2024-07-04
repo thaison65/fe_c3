@@ -49,10 +49,11 @@
   }
 
   .sidebar .menu .item {
+    margin-bottom: 10px;
     padding: 10px 0;
     display: flex;
     align-items: center;
-    color: #333;
+    color: #47de14;
     cursor: pointer;
   }
 
@@ -142,6 +143,91 @@
     display: flex;
     align-items: center;
   }
+
+  span {
+    padding-left: 1vh;
+  }
+
+  .item {
+    border-radius: 10px;
+    z-index: 1;
+    font-size: inherit;
+    font-family: inherit;
+    color: white;
+    padding: 0.5em 1em;
+    outline: none;
+    border: none;
+    background-color: hsl(17, 30%, 9%);
+  }
+
+  .item:hover {
+    cursor: pointer;
+    animation: jelly 0.5s;
+  }
+
+  @keyframes jelly {
+
+    0%,
+    100% {
+      transform: scale(1, 1);
+    }
+
+    25% {
+      transform: scale(0.9, 1.1);
+    }
+
+    50% {
+      transform: scale(1.1, 0.9);
+    }
+
+    75% {
+      transform: scale(0.95, 1.05);
+    }
+  }
+
+  .inbox {
+    margin-left: 5px;
+
+    background-image: url("./icon/inbox.svg");
+    width: 1em;
+    height: 1em;
+    background-color: #47de14;
+  }
+
+  img[alt="activity"] {
+    margin-left: 5px;
+    width: 1em;
+    height: 1em;
+    background-color: #47de14;
+  }
+
+  img[alt="schedule"] {
+    margin-left: 5px;
+    width: 1em;
+    height: 1em;
+    background-color: #47de14;
+  }
+
+  img[alt="document"] {
+    margin-left: 5px;
+    width: 1em;
+    height: 1em;
+    background-color: #47de14;
+  }
+
+  img[alt="setting"] {
+    margin-left: 5px;
+    width: 1em;
+    height: 1em;
+    background-color: #47de14;
+  }
+
+  img[alt="logout"] {
+    margin-left: 5px;
+    width: 1em;
+    height: 1em;
+    background-color: #47de14;
+  }
 </style>
 
 <div class="sidebar">
@@ -156,26 +242,36 @@
     </div>
     <div class="menu">
       <div class="item">
-        <i class="fas fa-inbox"></i>
+        <!-- <i class="fas fa-inbox"></i> -->
+        <div class="inbox"></div>
         <span>Inbox</span>
       </div>
       <div class="item">
-        <i class="fas fa-bell"></i>
+        <!-- <i class="fas fa-bell"></i> -->
+        <img src="./icon/activity.svg" alt="activity">
         <span>Activity</span>
       </div>
       <div class="item">
-        <i class="fas fa-calendar-alt"></i>
+        <!-- <i class="fas fa-calendar-alt"></i> -->
+        <img src="./icon/schedule.svg" alt="schedule">
         <span>Schedule</span>
       </div>
       <div class="item">
-        <i class="fas fa-folder"></i>
+        <!-- <i class="fas fa-folder"></i> -->
+        <img src="./icon/documents.svg" alt="document">
         <span>Documents</span>
       </div>
       <div class="item">
-        <i class="fas fa-cog"></i>
+        <!-- <i class="fas fa-cog"></i> -->
+        <img src="./icon/settings.svg" alt="setting">
         <span>Settings</span>
       </div>
       <div class="item">
+        <!-- <i class="fas fa-sign-out-alt"></i> -->
+        <img src="./icon/logout.svg" alt="logout">
+        <span>Logout</span>
+      </div>
+      <!-- <div class="item">
         <i class="fas fa-sign-out-alt"></i>
         <span>Logout</span>
       </div>
@@ -186,11 +282,7 @@
       <div class="item">
         <i class="fas fa-sign-out-alt"></i>
         <span>Logout</span>
-      </div>
-      <div class="item">
-        <i class="fas fa-sign-out-alt"></i>
-        <span>Logout</span>
-      </div>
+      </div> -->
     </div>
   </div>
 
