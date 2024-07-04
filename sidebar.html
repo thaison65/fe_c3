@@ -74,6 +74,101 @@
     border-top: 1px solid #ddd;
   }
 
+  /* Code actions button */
+  .sidebar .footer .actions {
+    /* position: relative; */
+    display: flex;
+    width: 50px;
+    height: 50px;
+  }
+
+  input#popUp {
+    display: none;
+  }
+
+  input#popUp:checked~.actions-pop {
+    /* display: none; */
+    opacity: inherit;
+    visibility: visible;
+  }
+
+
+  .sidebar .footer .actions .actions-button {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar .footer .actions .actions-button:hover {
+    transform: scale(1.1);
+  }
+
+  .sidebar .footer .actions .actions-button:after {
+    content: '\2807';
+    font-size: 50px;
+    background-color: transparent;
+    color: white;
+    transition: color 0.3s ease;
+  }
+
+  .sidebar .actions-pop {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    bottom: 20px;
+    left: 240px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    gap: 20px;
+    border-radius: 10px;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+  }
+
+  .sidebar .actions-pop::before {
+    content: "";
+    position: absolute;
+    bottom: 30px;
+    left: -20px;
+    width: 0;
+    height: 0;
+    border-radius: 20px;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-right: 15px solid rgba(255, 255, 255, 0.9);
+  }
+
+
+  .sidebar .actions-pop .actions-popUp {
+    cursor: pointer;
+    background-color: rgba(218, 218, 218, 0.9);
+    border: none;
+    padding: 20px 35px 20px;
+    display: flex;
+    gap: 10px;
+    border-radius: 7px;
+  }
+
+  .sidebar .actions-pop .actions-popUp:hover {
+    background-color: rgba(218, 218, 218, 0.9);
+    border: none;
+    padding: 20px 35px 20px;
+    display: flex;
+    gap: 10px;
+    border-radius: 10px;
+    transform: scale(1.1);
+  }
+
+  .sidebar .actions-pop .actions-popUp:nth-child(1) {}
+
+  .sidebar .actions-pop .actions-popUp:nth-child(2) {}
+
+  .sidebar .actions-pop .actions-popUp:nth-child(3) {}
+
+  .sidebar .actions-pop .actions-popUp:nth-child(4) {}
+
   .sidebar .footer img {
     width: 40px;
     height: 40px;
@@ -112,7 +207,7 @@
     align-items: flex-end;
   }
 
-  .sidebar .footer .actions button {
+  /* .sidebar .footer .actions button {
     margin: 5px 0;
     padding: 5px 10px;
     font-size: 12px;
@@ -124,7 +219,7 @@
 
   .sidebar .footer .actions button:hover {
     background-color: #f0f0f0;
-  }
+  } */
 
   .sidebar {
     background-color: rgb(207, 215, 216);
@@ -244,6 +339,7 @@
 </style>
 
 <div class="sidebar">
+
   <div>
     <div class="header">
       <div class="logo-container">
@@ -298,7 +394,6 @@
       </div> -->
     </div>
   </div>
-
   <div class="footer">
     <div class="info">
       <div class="avt-info">
@@ -310,8 +405,17 @@
       </div>
     </div>
     <div class="actions">
-      <button>Update App</button>
-      <button>Logout</button>
+      <input type="checkbox" id="popUp" />
+      <label for="popUp">
+        <div class="actions-button">
+        </div>
+      </label>
+      <div class="actions-pop">
+        <button class="actions-popUp"><i class="fa-regular fa-user"></i>User Settings</button>
+        <button class="actions-popUp"><i class="fa-solid fa-pen"></i>Update App</button>
+        <button class="actions-popUp"><i class="fa-solid fa-gear"></i>Settings</button>
+        <button class="actions-popUp"><i class="fa-solid fa-right-from-bracket"></i>Logout</button>
+      </div>
     </div>
   </div>
 </div>
