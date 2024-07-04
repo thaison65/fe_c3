@@ -12,6 +12,10 @@
         -webkit-animation: scrollText 20s linear infinite;
         animation: scrollText 20s linear infinite;
     }
+    .scroll-text-item {
+        display: inline;
+        padding: 0 30px;
+    }
 
     /* for Firefox */
     @-moz-keyframes scrollText {
@@ -47,7 +51,14 @@
     }
 </style>
 <div class="header">
-    <div class="scroll-text">
-        Người mới bắt đầu? Chưa có kinh nghiệm? Khoá học lập trình của LIKELION hỗ trợ bạn mọi lúc trên con đường học tập của mình
-    </div>
+    <div id="scrollText" class="scroll-text scroll-text1"></div>
+    <script>
+        fetch("title.txt").then((res) => res.text()).then(data => {
+            const listTitle = data.split("\n") || [];
+            const html = document.getElementById("scrollText").innerHTML;
+            listTitle.forEach((title, index) => {
+                document.getElementById("scrollText").innerHTML += `<div class="scroll-text-item scroll-text${index+2}">${title}</div>`;
+            })
+        })
+    </script>
 </div>
