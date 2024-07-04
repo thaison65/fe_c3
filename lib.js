@@ -10,7 +10,7 @@ function loadItemToList() {
                 },
                 () => data
             ).join("");
-            console.log(listItem);
+            // console.log(listItem);
             document.querySelector(".list-item").innerHTML = listItem;
         });
 }
