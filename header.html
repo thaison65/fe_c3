@@ -1,30 +1,53 @@
 <style>
     .header {
-        width: 100%;
         overflow: hidden;
         white-space: nowrap;
     }
 
-    .header-scroll {
-        display: inline-block;
-        animation: scrollText 30s infinite;
+    .scroll-text {
+        -moz-transform: translateX(100%);
+        -webkit-transform: translateX(100%);
+        transform: translateX(100%);
+        -moz-animation: scrollText 20s linear infinite;
+        -webkit-animation: scrollText 20s linear infinite;
+        animation: scrollText 20s linear infinite;
+    }
 
+    /* for Firefox */
+    @-moz-keyframes scrollText {
+        from {
+            -moz-transform: translateX(100%);
+        }
+        to {
+            -moz-transform: translateX(-100%);
+        }
+    }
+
+    /* for Chrome */
+    @-webkit-keyframes scrollText {
+        from {
+            -webkit-transform: translateX(100%);
+        }
+        to {
+            -webkit-transform: translateX(-100%);
+        }
     }
 
     @keyframes scrollText {
         from {
-            transform: translateX(-100%);
+            -moz-transform: translateX(100%);
+            -webkit-transform: translateX(100%);
+            transform: translateX(100%);
         }
-
         to {
-            transform: translateX(110%);
+            -moz-transform: translateX(-100%);
+            -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
         }
     }
 </style>
 <div class="header">
-    <div class="header-scroll">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio et, consequuntur inventore
-        incidunt maxime cumque praesentium expedita reiciendis mollitia non facere ad sint sequi nam a doloremque quidem
-        odio minima!
+    <div class="scroll-text">
+        Người mới bắt đầu? Chưa có kinh nghiệm? Khoá học lập trình của LIKELION hỗ trợ bạn mọi lúc trên con đường học tập của mình
     </div>
 </div>
