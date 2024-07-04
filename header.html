@@ -5,59 +5,32 @@
     }
 
     .scroll-text {
-        -moz-transform: translateX(100%);
-        -webkit-transform: translateX(100%);
         transform: translateX(100%);
-        -moz-animation: scrollText 20s linear infinite;
-        -webkit-animation: scrollText 20s linear infinite;
         animation: scrollText 20s linear infinite;
     }
+
     .scroll-text-item {
         display: inline;
         padding: 0 30px;
     }
 
-    /* for Firefox */
-    @-moz-keyframes scrollText {
-        from {
-            -moz-transform: translateX(100%);
-        }
-        to {
-            -moz-transform: translateX(-100%);
-        }
-    }
-
-    /* for Chrome */
-    @-webkit-keyframes scrollText {
-        from {
-            -webkit-transform: translateX(100%);
-        }
-        to {
-            -webkit-transform: translateX(-100%);
-        }
-    }
-
     @keyframes scrollText {
         from {
-            -moz-transform: translateX(100%);
-            -webkit-transform: translateX(100%);
             transform: translateX(100%);
         }
         to {
-            -moz-transform: translateX(-100%);
-            -webkit-transform: translateX(-100%);
             transform: translateX(-100%);
         }
     }
 </style>
 <div class="header">
-    <div id="scrollText" class="scroll-text scroll-text1"></div>
+    <div id="scrollText" class="scroll-text"></div>
     <script>
         fetch("title.txt").then((res) => res.text()).then(data => {
             const listTitle = data.split("\n") || [];
             const html = document.getElementById("scrollText").innerHTML;
             listTitle.forEach((title, index) => {
-                document.getElementById("scrollText").innerHTML += `<div class="scroll-text-item scroll-text${index+2}">${title}</div>`;
+                document.getElementById("scrollText").innerHTML += `<div class="scroll-text-item scroll-text${index + 2}">${title}</div>`;
             })
         })
     </script>
